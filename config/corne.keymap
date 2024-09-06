@@ -48,10 +48,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB         &kp Q        &kp W        &kp F         &kp P         &kp B         &kp J    &kp L          &kp U         &kp Y        &kp SEMI     &kp APOS
-&mt ESC MINUS   &hml LGUI A  &hml LALT R  &hml LCTRL S  &hml LSHFT T  &kp G         &kp M    &hmr LSHIFT N  &hmr LCTRL E  &hmr LALT I  &hmr LGUI O  &kp PLUS
-&kp UNDERSCORE  &kp Z        &kp X        &kp C         &kp D         &kp V         &kp K    &kp H          &kp COMMA     &kp DOT      &kp FSLH     &kp EQUAL
-                                          &kp LGUI      &mo 1         &kp LSHIFT    &kp RET  &kp SPACE      &kp BSPC
+&kp TAB         &kp Q        &kp W        &kp F         &kp P         &kp B               &kp J    &kp L          &kp U         &kp Y        &kp SEMI     &kp APOS
+&mt ESC MINUS   &hml LGUI A  &hml LALT R  &hml LCTRL S  &hml LSHFT T  &kp G               &kp M    &hmr LSHIFT N  &hmr LCTRL E  &hmr LALT I  &hmr LGUI O  &kp PLUS
+&kp UNDERSCORE  &kp Z        &kp X        &kp C         &kp D         &kp V               &kp K    &kp H          &kp COMMA     &kp DOT      &kp FSLH     &kp EQUAL
+                                          &kp LGUI      &mo 1         &mt LSHIFT SPACE    &kp RET  &mo 2          &kp BSPC
             >;
         };
 
@@ -63,10 +63,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp EXCLAMATION  &kp AT_SIGN   &kp POUND      &kp DOLLAR     &kp PERCENT     &kp CARET       &kp AMPERSAND     &kp ASTERISK          &trans                 &trans             &kp BSPC
-&kp LCTRL  &hml LGUI N1     &hml LALT N2  &hml LCTRL N3  &hml LSHFT N4  &kp N5          &kp N6          &hmr LSHIFT N7    &hmr LCTRL N8         &hmr LALT N9           &hmr LGUI N0       &kp LALT
-&kp LSHFT  &bt BT_CLR       &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3    &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE
-                                          &kp LGUI       &trans         &kp LSHIFT      &kp RET         &kp SPACE         &kp BACKSPACE
+&kp GRAVE  &kp EXCLAMATION  &kp AT_SIGN     &kp POUND         &kp DOLLAR            &kp PERCENT    &kp CARET  &kp AMPERSAND          &kp ASTERISK       &kp EQUAL        &kp MINUS     &none
+&none      &hml LGUI N1     &hml LALT N2    &hml LCTRL N3     &kp N4                &kp N5         &kp N6     &kp N7                 &hmr LCTRL N8      &hmr LALT N9     &hmr LGUI N0  &none
+&none      &kp BACKSLASH    &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &none          &none      &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &kp PIPE      &none
+                                            &kp LGUI          &none                 &kp LSHIFT     &kp RET    &kp SPACE              &kp BACKSPACE
             >;
         };
 
@@ -83,6 +83,33 @@
 &kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
                              &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
             >;
+        };
+
+        layer_3 {
+            bindings = <
+&trans      &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans  &trans  &trans
+                                        &trans        &trans        &trans          &trans  &trans  &trans
+            >;
+        };
+
+        functional_layer {
+            bindings = <
+&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6    &kp F7  &kp F8    &kp F9  &kp F10  &kp F11  &kp F12
+&none   &none   &none   &none   &none   &none     &none   &none     &none   &none    &none    &none
+&none   &none   &none   &none   &none   &none     &none   &none     &none   &none    &none    &none
+                        &none   &none   &trans    &trans  &kp LALT  &trans
+            >;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        navigation_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 };
